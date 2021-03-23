@@ -37,7 +37,6 @@ namespace FM_SoundEffectTrackMML
 				public bool mbRevervMode = false;	// todo
 				
 				public bool mbLoop = false;
-				public bool mbLoopMark = false;
 				
 				
 				
@@ -93,12 +92,6 @@ namespace FM_SoundEffectTrackMML
 								if (mSequence.Pop(out Packet)){
 									if (Packet.IsScale){
 										Duration(ref Queue, ref Clock, false);
-										#if false
-										if (!mbLoopMark && mbLoop){
-											mbLoopMark = true;
-											Queue.Append($"L ");
-										}
-										#endif
 										
 										mScale = Packet.Scale;
 										mbSlur = Packet.IsSlur;
@@ -226,6 +219,7 @@ namespace FM_SoundEffectTrackMML
 											}
 											case (int)Packet.eCommand.L:{
 												if (oTrack == 0){
+													Duration(ref Queue, ref Clock, false);
 													Queue.Append($"L ");
 													mbLoop = true;
 												}
