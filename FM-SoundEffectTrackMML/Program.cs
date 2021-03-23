@@ -47,7 +47,7 @@ namespace FM_SoundEffectTrackMML
 			} else {
 				Console.WriteLine("input_vmt.mml");
 			}
-			Console.ReadKey();
+//			Console.ReadKey();
 		}
 	}
 }
